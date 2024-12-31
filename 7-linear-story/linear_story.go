@@ -2,22 +2,7 @@ package main
 
 import "fmt"
 
-// type storyPage struct {
-// 	text string
-// 	nextPage *storyPage
-// }
 
-
-// func playStory(page *storyPage) {
-
-// 	if page == nil { // checking for null pointer
-// 		return
-// 	}
-
-// 	fmt.Println(page.text)
-
-// 	playStory(page.nextPage)
-// }
 
 type storyPage struct {
 	text string
