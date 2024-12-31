@@ -36,7 +36,12 @@ func (page *storyPage) addToEnd(text string) {
 
 }
 
+func (page *storyPage) addAfter(text string) {
+	
+	pagePtrToAdd := &storyPage{text, page.nextPage}
 
+	page.nextPage = pagePtrToAdd
+}
 
 
 func main() {
@@ -44,6 +49,7 @@ func main() {
 	page1.addToEnd("2nd Page")
 	page1.addToEnd("3rd page")
 
+	page1.addAfter("Hai john")
 
 	page1.playStory() // playStory(&page1) // in the first approach
 
