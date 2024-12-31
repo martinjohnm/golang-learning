@@ -43,13 +43,11 @@ func (page *storyPage) playStory() {
 
 func (page *storyPage) addToEnd(text string) {
 
-	pagePointerToAdd := &storyPage{text, nil}
-
 	for page.nextPage != nil {
 		page = page.nextPage
 	}
 
-	page.nextPage = pagePointerToAdd
+	page.nextPage = &storyPage{text, nil}
 
 }
 
