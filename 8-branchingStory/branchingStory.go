@@ -1,10 +1,12 @@
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"os"
-)
+import "fmt"
+
+// import (
+// 	"bufio"
+// 	"fmt"
+// 	"os"
+// )
 
 
 
@@ -15,30 +17,41 @@ type storyPage struct {
 }
 
 
-func (node *storyPage) playStory() {
+func (node *storyPage) playStory(depth int) {
 
-	fmt.Println(node.text)
-	scanner := bufio.NewScanner(os.Stdin)
 
-	if (node.leftNode != nil && node.rightNode != nil) {
-
-		for {
-			scanner.Scan()
-
-			answer := scanner.Text()
-
-			if answer == "yes" {
-				node.leftNode.playStory()
-				break
-			} else if answer == "no" {
-				node.rightNode.playStory()
-				break
-			} else {
-				fmt.Println("Incorrect input")
-			}
-
-		}
+	for i := 0; i < depth; i++ {
+		fmt.Print("  ")
 	}
+	fmt.Println(node.text)
+
+	if node.leftNode != nil {
+		node.leftNode.playStory(depth + 1)
+	}
+	if node.rightNode != nil {
+		node.rightNode.playStory(depth + 1)
+	}
+	// scanner := bufio.NewScanner(os.Stdin)
+
+	// if (node.leftNode != nil && node.rightNode != nil) {
+
+	// 	for {
+	// 		scanner.Scan()
+
+	// 		answer := scanner.Text()
+
+	// 		if answer == "yes" {
+	// 			node.leftNode.playStory(depth + 1)
+	// 			break
+	// 		} else if answer == "no" {
+	// 			node.rightNode.playStory(depth + 1)
+	// 			break
+	// 		} else {
+	// 			fmt.Println("Incorrect input")
+	// 		}
+
+	// 	}
+	// }
 }
 
 
@@ -59,7 +72,7 @@ func main() {
 	root.rightNode = &rightPath
 
 
-	root.playStory()
+	root.playStory(0)
 
 
 }
